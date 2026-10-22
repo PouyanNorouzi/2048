@@ -1,25 +1,22 @@
 #include "game.hpp"
-#include <iostream>
 
 Game::Game() {
-  // Rand_int rand {1, 2};
+    // Rand_int rand {1, 2};
 
-  status = ONGOING;
+    status = ONGOING;
 
-  // make the start random
-  state_[0][0] = 2;
+    // make the start random
+    state_[0][0] = 2;
 }
 
 std::string Game::to_string() {
-  std::string res = "";
-  res += '|';
-  // build the roof
+    std::string res = "";
+    res += '|';
+    // build the roof
 
-  for (auto row : state_) {
-    for (auto cell : row) {
-
+    for(auto row: state_) {
+        for(auto cell: row) {}
     }
-  }
 
-  return "";
+    return "";
 }

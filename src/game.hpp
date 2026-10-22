@@ -10,21 +10,21 @@ enum Direction { UP, DOWN, LEFT, RIGHT };
 enum GameStatus { WIN, LOSS, ONGOING };
 
 class Game {
-private:
-  std::vector<std::vector<int>> state_ = {
-      {0, 0, 0, 0},
-      {0, 0, 0, 0},
-      {0, 0, 0, 0},
-      {0, 0, 0, 0},
-  };
-  GameStatus checkGameStatus();
+  private:
+    std::vector<std::vector<int>> state_ = {
+        {0, 0, 0, 0},
+        {0, 0, 0, 0},
+        {0, 0, 0, 0},
+        {0, 0, 0, 0},
+    };
+    GameStatus checkGameStatus();
 
-public:
-  GameStatus status;
+  public:
+    GameStatus status;
 
-  Game();
-  void move(Direction direction);
-  std::string to_string();
+    Game();
+    void        move(Direction direction);
+    std::string to_string();
 };
 
 #endif
