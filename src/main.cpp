@@ -16,26 +16,26 @@ int main() {
         std::cin >> input;
 
         if(input[0] == '1') {
-            std::cout << "Game starting now!";
+            std::cout << "Game starting now!\n";
 
             Game game{};
             bool keepGameLoopGoing = true;
             while(keepGameLoopGoing && game.status == ONGOING) {
-                Direction *direction = nullptr;
+                Direction direction = NONE;
 
                 std::cout << "What is your move? (u d l r) q to quit\n";
                 std::cin >> input;
 
                 switch(tolower(input[0])) {
-                case 'u': *direction = UP; break;
-                case 'd': *direction = DOWN; break;
-                case 'l': *direction = LEFT; break;
-                case 'r': *direction = RIGHT; break;
+                case 'u': direction = UP; break;
+                case 'd': direction = DOWN; break;
+                case 'l': direction = LEFT; break;
+                case 'r': direction = RIGHT; break;
                 case 'q': keepGameLoopGoing = false; break;
                 default:  std::cout << "I do not know what you just said bro try again\n";
                 }
 
-                if(direction != nullptr) game.move(*direction);
+                if(direction != NONE) game.move(direction);
             }
         } else if(input[0] == '2' || input[0] == 'q') {
             keepMainLoopGoing = false;
