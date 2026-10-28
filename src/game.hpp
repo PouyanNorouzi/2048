@@ -1,30 +1,28 @@
 #ifndef GAME_HPP
 #define GAME_HPP
 
-#include <string>
-#include <vector>
-#define GRID_SIZE 4 // TODO: Make it dynamic later
+#include "grid.hpp"
 
-enum Direction { UP, DOWN, LEFT, RIGHT, NONE };
+#define DEFAULT_GRID_SIZE 4
 
-enum GameStatus { WIN, LOSS, ONGOING };
+enum class Direction { UP, DOWN, LEFT, RIGHT, NONE };
+
+enum class GameStatus { WIN, LOSS, ONGOING };
 
 class Game {
   private:
-    std::vector<std::vector<int>> state_ = {
-        {0, 0, 0, 0},
-        {0, 0, 0, 0},
-        {0, 0, 0, 0},
-        {0, 0, 0, 0},
-    };
+    int             grid_size_;
+    SquareGrid<int> state_;
+
     GameStatus checkGameStatus();
 
   public:
     GameStatus status;
 
-    Game();
+    explicit Game(int grid_size = DEFAULT_GRID_SIZE);
+
     void        move(Direction direction);
-    std::string to_string();
+    std::string toString() { return state_.toString(); }
 };
 
 #endif

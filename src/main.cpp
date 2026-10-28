@@ -10,7 +10,7 @@ int main() {
 
     bool keepMainLoopGoing = true;
     while(keepMainLoopGoing) {
-        // instead of prompting have it check every time a button is pressed
+        // TODO: instead of prompting have it check every time a button is pressed
         std::cout << "Press 1 to start game, Press 2 or q to quit. (I only read "
                      "the first letter you type bro also just lowercase)\n";
         std::cin >> input;
@@ -20,22 +20,23 @@ int main() {
 
             Game game{};
             bool keepGameLoopGoing = true;
-            while(keepGameLoopGoing && game.status == ONGOING) {
-                Direction direction = NONE;
+            while(keepGameLoopGoing && game.status == GameStatus::ONGOING) {
+                Direction direction = Direction::NONE;
 
+                std::cout << game.toString() << "\n";
                 std::cout << "What is your move? (u d l r) q to quit\n";
                 std::cin >> input;
 
                 switch(tolower(input[0])) {
-                case 'u': direction = UP; break;
-                case 'd': direction = DOWN; break;
-                case 'l': direction = LEFT; break;
-                case 'r': direction = RIGHT; break;
+                case 'u': direction = Direction::UP; break;
+                case 'd': direction = Direction::DOWN; break;
+                case 'l': direction = Direction::LEFT; break;
+                case 'r': direction = Direction::RIGHT; break;
                 case 'q': keepGameLoopGoing = false; break;
                 default:  std::cout << "I do not know what you just said bro try again\n";
                 }
 
-                if(direction != NONE) game.move(direction);
+                if(direction != Direction::NONE) game.move(direction);
             }
         } else if(input[0] == '2' || input[0] == 'q') {
             keepMainLoopGoing = false;
