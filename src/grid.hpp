@@ -6,7 +6,7 @@
 
 template<typename T> class SquareGrid {
   public:
-    explicit SquareGrid(int size) : grid_(size), size_(size) {}
+    explicit SquareGrid(int size) : grid_(size * size, 0), size_(size) {}
 
     T           getIndex(int row, int col) { return grid_[row * size_ + col]; }
     void        setIndex(int row, int col, T val) { grid_[row * size_ + col] = val; }
